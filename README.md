@@ -8,3 +8,7 @@
 * Ruby
 * Rails
 * Git(HTTPSからSSH通信へ変更)
+
+https://github.com/git-ryou2405/New_Attendance_B_0501
+
+http://localhost:3000/login
