@@ -14,6 +14,8 @@ gem 'bootstrap-sass'
 gem 'hirb'                      # モデルの出力結果を表形式で表示するGem
 gem 'hirb-unicode'              # 日本語などマルチバイト文字の出力時の出力結果のずれに対応
 
+gem 'rounding'                  # 時間だけでなく、数値全般を扱える
+
 gem 'puma',         '~> 3.7'
 gem 'uglifier',     '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'

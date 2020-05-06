@@ -17,8 +17,11 @@
         <% @attendances.each do |day| %>
           <%= f.fields_for "attendances[]", day do |attendance| %>
             <tr>
+              <!-- 日付 -->
               <td><%= l(day.worked_on, format: :short) %></td>
+              <!-- 曜日 -->
               <td><%= $days_of_the_week[day.worked_on.wday] %></td>
+              <!-- 出勤時間 --> <!-- 退勤時間 -->
               <% if !current_user.admin? && (Date.current < day.worked_on) %>
                 <td><%= attendance.time_field :started_at, readonly: true, class: "form-control" %></td>
                 <td><%= attendance.time_field :finished_at, readonly: true, class: "form-control" %></td>
@@ -27,10 +30,12 @@
                 <td><%= attendance.time_field :finished_at, class: "form-control" %></td>
               <% end %>
               <td>
+                <!-- 在社時間 -->
                 <% if day.started_at.present? && day.finished_at.present? %>
-                  <%= working_times(day.started_at, day.finished_at) %>
+                  <%= working_times(day.started_at.floor_to(15.minutes), day.finished_at.floor_to(15.minutes)) %>
                 <% end %>
               </td>
+              <!-- 備考 -->
               <td><%= attendance.text_field :note, class: "form-control" %></td>
             </tr>
           <% end %>
